@@ -13,6 +13,9 @@ $(document).ready(function() {
     		var template = Handlebars.compile(source);
     		var context = data;
     		
+    		//spinner
+    		$('#spincen').hide();
+    		
 			Handlebars.registerHelper('category', function(context, options) {
   				
   				switch(this.slug)

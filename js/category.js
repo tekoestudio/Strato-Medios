@@ -14,6 +14,9 @@ $(document).ready(function() {
     		var source = $("#datobox").html();
     		var template = Handlebars.compile(source);
     		var context = data;
+    		
+    		//spinner
+    		$('#spincen').hide();
 	
 			Handlebars.registerHelper('category', function(context, options) {
   				
