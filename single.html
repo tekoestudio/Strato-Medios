@@ -76,6 +76,13 @@
         	<div id="spincen" style="display:none;"><img src="images/spinner2.gif" /></div>
             <section id="contentWrapper">
                 <div id="contentScroller" data-role="content">
+                
+                	<div id="loading"></div>
+                	<div style="display:none;" id="pullDown">
+						
+						<span class="pullDownIcon"></span><span class="pullDownLabel">Pull down to refresh...</span>
+					
+					</div>
                      <ul id="datos" class=".fullwidth limpiar">
                      
                      <script id="datobox" type="text/x-handlebars-template">
@@ -102,6 +109,12 @@
                      </ul>
                  
                  	<div class="pad"></div>
+                 	
+                 	 <div style="display:none;" id="pullUp">
+			<span class="pullUpIcon"></span><span class="pullUpLabel">Pull up to refresh...</span>
+		</div>
+                     
+                     <div class="pad"></div>
                  
              </div>
             </section>
