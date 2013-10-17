@@ -12,8 +12,9 @@ function pullDownAction () {
 		$('#loading').fadeOut();
 		$('#loading').html();
 		console.log('cargo');
+		var url = window.location.href;
 		
-		window.location.href = "index.html";
+		window.location.href = url;
 		
 		//refresh
 		scrollContent.refresh();
