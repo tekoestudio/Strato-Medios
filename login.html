@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>SM medios</title>
+    
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+    
+         <!-- Fonts -->
+        <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,300&subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
+        
+        <!-- Hojas de estilo CSS -->
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css">
+    
+        <!-- JS -->
+        <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+        
+        
+        <!-- ICONS -->
+
+		<link rel="apple-touch-icon-precomposed" sizes="152x152" href="icons/sm-152.png">
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="icons/sm-144.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="icons/sm-114.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="icons/sm-72.png">
+        <link rel="apple-touch-icon-precomposed" sizes="76x76" href="icons/sm-76.png">
+        <link rel="apple-touch-icon-precomposed" sizes="57x57" href="icons/sm-57.png">
+        <link rel="apple-touch-icon-precomposed" href="#">
+        <link rel="shortcut icon" href="#">
+        
+        <script type="text/javascript">
+        
+        jQuery(document).ready(function(e){function t(t,n){e(".lwa-loading").remove();n=e(n);if(t.result===true){n.attr("class","lwa-status lwa-status-confirm").html(t.message)}else if(t.result===false){n.attr("class","lwa-status lwa-status-invalid").html(t.error);n.find("a").click(function(t){t.preventDefault();e(this).parents(".lwa").find("form.lwa-remember").show("slow")})}else{n.attr("class","lwa-status lwa-status-invalid").html("An error has occured. Please try again.")}}if(e("#LoginWithAjax").length>0){e("#LoginWithAjax").addClass("lwa");e("#LoginWithAjax_Status").addClass("lwa-status");e("#LoginWithAjax_Register").addClass("lwa-register");e("#LoginWithAjax_Remember").addClass("lwa-remember");e("#LoginWithAjax_Links_Remember").addClass("lwa-links-remember");e("#LoginWithAjax_Links_Remember_Cancel").addClass("lwa-links-remember-cancel");e("#LoginWithAjax_Form").addClass("lwa-form")}e("form.lwa-form, form.lwa-remember, div.lwa-register form").submit(function(n){n.preventDefault();var r=e(this);var i=r.find(".lwa-status");if(i.length==0){i=e('<span class="lwa-status"></span>');r.prepend(i)}var s=r.find(".lwa-ajax");if(s.length==0){s=e('<input class="lwa-ajax" name="lwa" type="hidden" value="1" />');r.prepend(s)}e('<div class="lwa-loading"></div>').prependTo(r);e.post(r.attr("action"),r.serialize(),function(n){t(n,i);e(document).trigger("lwa_"+n.action,[n,r])},"jsonp")});e(document).on("lwa_login",function(t,n,r){if(n.result===true){if(n.widget!=null){e.get(n.widget,function(t){var n=e(t);r.parent(".lwa").replaceWith(n);var i=n.find(".").show();var s=n.parent().find(".lwa-title");s.replaceWith(i)})}else{if(n.redirect==null){window.location.reload()}else{window.location=n.redirect}}}});e(".lwa-modal").each(function(t,n){var r=e(n);r.parents(".lwa").data("modal",r);e("body").append(e('<div class="lwa"></div>').append(r))});e(document).on("click",".lwa-links-modal",function(t){t.preventDefault();target=e(this).parents(".lwa").data("modal");target.reveal({modalbgclass:"lwa-modal-bg",dismissmodalclass:"lwa-modal-close"})});e(".lwa-links-register-inline").click(function(t){t.preventDefault();e(this).parents(".lwa").find(".lwa-register").show("slow")});e(".lwa-links-register-inline-cancel").click(function(t){t.preventDefault();e(this).parents(".lwa-register").hide("slow")});e(document).on("click",".lwa-links-remember",function(t){t.preventDefault();e(this).parents(".lwa").find(".lwa-remember").show("slow")});e(document).on("click",".lwa-links-remember-cancel",function(t){t.preventDefault();e(this).parents(".lwa-remember").hide("slow")})});(function(e){e("a[data-reveal-id]").on("click",function(t){t.preventDefault();var n=e(this).attr("data-reveal-id");e("#"+n).reveal(e(this).data())});e.fn.reveal=function(t){var n={animation:"fadeAndPop",animationspeed:300,closeonbackgroundclick:true,dismissmodalclass:"close-reveal-modal",modalbgclass:"reveal-modal-bg"};var t=e.extend({},n,t);return this.each(function(){function a(){s=false}function f(){s=true}var n=e(this),r=parseInt(n.css("top")),i=n.height()+r,s=false,o=e("."+t.modalbgclass);if(o.length==0){o=e('<div class="'+t.modalbgclass+'" />').insertAfter(n)}if(n.find("."+t.dismissmodalclass).length==0){n.append('<a class="'+t.dismissmodalclass+'">&#215;</a>')}n.bind("reveal:open",function(){o.unbind("click.modalEvent");e("."+t.dismissmodalclass).unbind("click.modalEvent");if(!s){f();if(t.animation=="fadeAndPop"){n.css({top:e(document).scrollTop()-i,opacity:0,visibility:"visible",display:"block"});o.fadeIn(t.animationspeed/2);n.delay(t.animationspeed/2).animate({top:e(document).scrollTop()+r+"px",opacity:1},t.animationspeed,a())}if(t.animation=="fade"){n.css({opacity:0,visibility:"visible",top:e(document).scrollTop()+r,display:"block"});o.fadeIn(t.animationspeed/2);n.delay(t.animationspeed/2).animate({opacity:1},t.animationspeed,a())}if(t.animation=="none"){n.css({visibility:"visible",top:e(document).scrollTop()+r,display:"block"});o.css({display:"block"});a()}}n.unbind("reveal:open")});n.bind("reveal:close",function(){if(!s){f();if(t.animation=="fadeAndPop"){o.delay(t.animationspeed).fadeOut(t.animationspeed);n.animate({top:e(document).scrollTop()-i+"px",opacity:0},t.animationspeed/2,function(){n.css({top:r,opacity:1,visibility:"hidden"});a()})}if(t.animation=="fade"){o.delay(t.animationspeed).fadeOut(t.animationspeed);n.animate({opacity:0},t.animationspeed,function(){n.css({opacity:1,visibility:"hidden",top:r});a()})}if(t.animation=="none"){n.css({visibility:"hidden",top:r});o.css({display:"none"})}}n.unbind("reveal:close")});n.trigger("reveal:open");var u=e("."+t.dismissmodalclass).bind("click.modalEvent",function(){n.trigger("reveal:close")});if(t.closeonbackgroundclick){o.css({cursor:"pointer"});o.bind("click.modalEvent",function(){n.trigger("reveal:close")})}e("body").keyup(function(e){if(e.which===27){n.trigger("reveal:close")}})})}})(jQuery)   
+        </script>
+
+</head>
+<body>
+    <div id="page" class="limpiar" data-role="page">
+    	
+        <section id="sesion">
+    
+    	<div id="logo"> <img src="images/logo.png" /></div>
+    	
+    	<div id="message"></div>
+    	
+    	<div class="lwa lwa-divs-only">
+		<span class="lwa-status"></span>
+	
+		<form method="post" action="http://www.stratomedios.mx/ags/wp-login.php" class="lwa-form" name="lwa-form">
+		
+		<div data-role="fieldcontain" class="ui-hide-label lwa-username">
+        	<input type="text" class="input" id="lwa_user_login" name="log" placeholder="user name / email">
+         </div>
+         
+         <div data-role="fieldcontain" class="ui-hide-label lwa-password">
+            <input type="password" class="input" id="lwa_user_pass" name="pwd" placeholder="contraseña">
+    
+      	</div>
+
+		
+		<div class="lwa-login_form">
+					</div>
+   
+		<div class="lwa-submit-button">
+			<input id="sub" type="submit" tabindex="100" value="Entrar" id="lwa_wp-submit" name="wp-submit">
+			<input type="hidden" value="" name="lwa_profile_link">
+			<input type="hidden" value="login" name="login-with-ajax">
+		</div>
+		
+		<div class="lwa-links">
+			<input style="display:none;" type="checkbox" value="forever" class="lwa-rememberme" name="rememberme"> <label style="display:none;">Recuerdar mis datos</label>
+			<br>
+        				<a style="display:none;" title="Contraseña perdida y encontrada" href="http://www.stratomedios.mx/ags/wp-login.php?action=lostpassword" class="lwa-links-remember">¿Olvidó la contraseña?</a>
+								</div>
+	</form>
+		<form style="display:none;" method="post" action="http://www.stratomedios.mx/ags/wp-login.php?action=lostpassword" class="lwa-remember" name="lwa-remember">
+		<p><strong>Recordatorio de contraseña</strong></p>
+		<div class="lwa-remember-email">  
+						<input type="text" onblur="if(this.value == ''){this.value = 'Digite su nombre de usuario o correo electrónico'}" onfocus="if(this.value == 'Digite su nombre de usuario o correo electrónico'){this.value = '';}" value="Digite su nombre de usuario o correo electrónico" id="lwa_user_remember" name="user_login">
+					</div>
+		<div class="lwa-submit-button">
+			<input type="submit" value="Obtener nueva contraseña">
+			<a class="lwa-links-remember-cancel" href="#">Cancel</a>
+			<input type="hidden" value="remember" name="login-with-ajax">         
+		</div>
+	</form>
+			<div style="display:none;" class="lwa-register">
+		<form method="post" action="http://www.stratomedios.mx/ags/wp-login.php?action=register" id="registerform" name="registerform">
+			<p><strong>Register For This Site</strong></p>         
+			<div class="lwa-username">
+								<input type="text" onblur="if(this.value == ''){this.value = 'Usuario'}" onfocus="if(this.value == 'Usuario'){this.value = '';}" value="Usuario" id="user_login" name="user_login">   
+		  	</div>
+		  	<div class="lwa-email">
+		  						<input type="text" onblur="if(this.value == ''){this.value = 'E-mail'}" onfocus="if(this.value == 'E-mail'){this.value = '';}" value="E-mail" id="user_email" name="user_email">   
+			</div>
+						<p class="lwa-submit-button">
+				A password will be e-mailed to you.				<input type="submit" tabindex="100" value="Registrarse" class="button-primary" id="wp-submit" name="wp-submit">
+				<a class="lwa-links-register-inline-cancel" href="#">Cancel</a>
+				<input type="hidden" value="register" name="login-with-ajax">
+			</p>
+		</form>
+	</div>
+	</div>
+    
+    </section>
+         
+    </div><!-- /page -->
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>SM medios</title>
+    
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+    
+         <!-- Fonts -->
+        <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,300&subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
+        <!-- Hojas de estilo CSS -->
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css">
+    
+        <!-- JS -->
+        <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+       	<script type="application/javascript" src="js/iscroll.js"></script>
+        <script src="js/handelsbars.js"></script>
+        <script src="js/custom.js"></script>
+        <script src="js/category.js"></script>
+        
+       	<!-- ICONS -->
+
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="#">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="#">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="#">
+        <link rel="apple-touch-icon-precomposed" href="#">
+        <link rel="shortcut icon" href="#">
+
+</head>
+<body>
+    <div id="page" class="limpiar" data-role="page">  
+      
+    <header data-role="header">
+    	<a id="inout" href="#">Menu</a>
+		<h1>SM medios</h1>
+        <div id="logo2"></div>
+	</header><!-- /header -->   
+    
+		<div id="menu">
+            <nav id="navWrapper">
+                <ul id="navScroller">
+                    <li class="blue">
+                     <h1><a onclick="window.location = 'category.html?cat=alcalde';" href="#">Alcalde</a></h1>
+                    </li>
+                    <li class="aqua">
+                     <h1><a onclick="window.location = ''" href="#">Cabildo</a></h1>
+                    </li>
+                    <li class="green">
+                     <h1><a onclick="window.location = 'category.html?cat=camaras-empresariales';" href="#">Cámaras Empresariales</a></h1>
+                    </li>
+                    <li class="yellow">
+                     <h1><a onclick="window.location = 'category.html?cat=columnas-editoriales';" href="#">Columnas/ Editoriales</a></h1>
+                    </li>
+                    <li class="orange">
+                     <h1><a onclick="window.location = 'category.html?cat=partidos-politicos'" href="#">Partidos Políticos</a></h1>
+                    </li>
+                    <li class="red">
+                     <h1><a onclick="window.location = 'category.html?cat=delegaciones'" href="#">Delegaciones</a></h1>
+                    </li>
+                    <li class="pink">
+                     <h1><a onclick="window.location = ''" href="#">Gobernador</a></h1>
+                    </li>
+                    <li class="purple">
+                     <h1><a onclick="window.location = ''" href="#">Gobierno del Estado</a></h1>
+                    </li>
+                    <li class="dblue">
+                     <h1><a onclick="window.location = ''" href="#">Gobierno Municipal</a></h1>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+            
+        <div id="content" data-role="content" >
+            <section id="contentWrapper">
+                <div id="contentScroller" data-role="content">
+                     <ul id="datos" class="grid3 limpiar">
+                     
+                     <script id="datobox" type="text/x-handlebars-template">
+                     
+                     	{{#each posts}}
+                     	
+                        <li class="col">
+                        	<span class="box 
+                        	 {{#each taxonomy_temas}}
+                            
+                            	{{category slug}}
+								
+                            {{/each}}
+                        	
+                        	">
+                        	
+                        	</span>
+                            <h2><a onclick="window.location = 'single.html?id={{id}}';" href="#" title="{{title}}">{{title}}</a></h2>
+                            <p>{{{excerpt}}}</p>
+                            
+                        </li>
+                        
+                        {{/each}}
+                 
+                 	</script>
+                        
+                     </ul>
+                 
+                 
+             </div>
+            </section>
+            
+        </div><!-- /content -->
+        
+        
+ 
+    </div><!-- /page -->
+</body>
+</html>
