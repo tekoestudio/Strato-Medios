@@ -2,7 +2,7 @@ var scrollContent,
 	scrollNav;
 
 function loaded() {
-	scrollContent = new iScroll('contentWrapper', { scrollbarClass: 'myScrollbar' });
+	//scrollContent = new iScroll('contentWrapper', { scrollbarClass: 'myScrollbar' });
 	scrollNav = new iScroll('navWrapper', { scrollbarClass: 'myScrollbar' });
 }
 
