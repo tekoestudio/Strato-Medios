@@ -45,7 +45,10 @@ $(document).ready(function() {
 			console.log(template(context));
     		$('#datos').html(template(context));
     		
-    		
+    		setTimeout( function(){
+        		scrollNav.refresh() ;
+        		scrollContent.refresh();
+        	} , 100 ) ;
     				
     	},
     	

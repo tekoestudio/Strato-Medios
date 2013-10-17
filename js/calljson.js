@@ -44,9 +44,9 @@ $(document).ready(function() {
     		$('#datos').html(template(context));
     		
     		setTimeout( function(){
-        	scrollNav.refresh() ;
-        	scrollContent.refresh();
-        } , 100 ) ;
+        		scrollNav.refresh() ;
+        		scrollContent.refresh();
+        	} , 100 ) ;
     		
     		
     				
