@@ -12,8 +12,8 @@ $(document).ready(function() {
     		var source = $("#datobox").html();
     		var template = Handlebars.compile(source);
     		var context = data;
-	
-			Handlebars.registerHelper('category', function(context, options) {
+    		
+    		Handlebars.registerHelper('category', function(context, options) {
   				
   				switch(this.slug)
 					{
@@ -42,6 +42,11 @@ $(document).ready(function() {
 		
 			//console.log(template(context));
     		$('#datos').html(template(context));
+    		
+    		setTimeout( function(){
+        	scrollNav.refresh() ;
+        	scrollContent.refresh();
+        } , 100 ) ;
     		
     		
     				
