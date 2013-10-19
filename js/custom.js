@@ -29,9 +29,6 @@ function pullUpAction () {
 		$('#loading').fadeOut();
 		$('#loading').html();
 		
-		
-		
-				
 		scrollContent.refresh();		
 	}, 1000);	
 }

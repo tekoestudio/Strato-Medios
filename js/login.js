@@ -1,7 +1,54 @@
-jQuery(document).ready(function(e){
-	function t(t,n){e(".lwa-loading").remove();n=e(n);
-	if(t.result===true){
-		n.attr("class","lwa-status lwa-status-confirm").html(t.message)
-	}else if(t.result===false){
-		n.attr("class","lwa-status lwa-status-invalid").html(t.error);n.find("a").click(
-			function(t){t.preventDefault();e(this).parents(".lwa").find("form.lwa-remember").show("slow")})}else{n.attr("class","lwa-status lwa-status-invalid").html("An error has occured. Please try again.")}}if(e("#LoginWithAjax").length>0){e("#LoginWithAjax").addClass("lwa");e("#LoginWithAjax_Status").addClass("lwa-status");e("#LoginWithAjax_Register").addClass("lwa-register");e("#LoginWithAjax_Remember").addClass("lwa-remember");e("#LoginWithAjax_Links_Remember").addClass("lwa-links-remember");e("#LoginWithAjax_Links_Remember_Cancel").addClass("lwa-links-remember-cancel");e("#LoginWithAjax_Form").addClass("lwa-form")}e("form.lwa-form, form.lwa-remember, div.lwa-register form").submit(function(n){n.preventDefault();var r=e(this);var i=r.find(".lwa-status");if(i.length==0){i=e('<span class="lwa-status"></span>');r.prepend(i)}var s=r.find(".lwa-ajax");if(s.length==0){s=e('<input class="lwa-ajax" name="lwa" type="hidden" value="1" />');r.prepend(s)}e('<div class="lwa-loading"></div>').prependTo(r);e.post(r.attr("action"),r.serialize(),function(n){t(n,i);e(document).trigger("lwa_"+n.action,[n,r])},"jsonp")});e(document).on("lwa_login",function(t,n,r){if(n.result===true){if(n.widget!=null){e.get(n.widget,function(t){var n=e(t);r.parent(".lwa").replaceWith(n);var i=n.find(".").show();var s=n.parent().find(".lwa-title");s.replaceWith(i)})}else{if(n.redirect==null){window.location.reload()}else{/*window.location=n.redirect*/}}}});e(".lwa-modal").each(function(t,n){var r=e(n);r.parents(".lwa").data("modal",r);e("body").append(e('<div class="lwa"></div>').append(r))});e(document).on("click",".lwa-links-modal",function(t){t.preventDefault();target=e(this).parents(".lwa").data("modal");target.reveal({modalbgclass:"lwa-modal-bg",dismissmodalclass:"lwa-modal-close"})});e(".lwa-links-register-inline").click(function(t){t.preventDefault();e(this).parents(".lwa").find(".lwa-register").show("slow")});e(".lwa-links-register-inline-cancel").click(function(t){t.preventDefault();e(this).parents(".lwa-register").hide("slow")});e(document).on("click",".lwa-links-remember",function(t){t.preventDefault();e(this).parents(".lwa").find(".lwa-remember").show("slow")});e(document).on("click",".lwa-links-remember-cancel",function(t){t.preventDefault();e(this).parents(".lwa-remember").hide("slow")})});(function(e){e("a[data-reveal-id]").on("click",function(t){t.preventDefault();var n=e(this).attr("data-reveal-id");e("#"+n).reveal(e(this).data())});e.fn.reveal=function(t){var n={animation:"fadeAndPop",animationspeed:300,closeonbackgroundclick:true,dismissmodalclass:"close-reveal-modal",modalbgclass:"reveal-modal-bg"};var t=e.extend({},n,t);return this.each(function(){function a(){s=false}function f(){s=true}var n=e(this),r=parseInt(n.css("top")),i=n.height()+r,s=false,o=e("."+t.modalbgclass);if(o.length==0){o=e('<div class="'+t.modalbgclass+'" />').insertAfter(n)}if(n.find("."+t.dismissmodalclass).length==0){n.append('<a class="'+t.dismissmodalclass+'">&#215;</a>')}n.bind("reveal:open",function(){o.unbind("click.modalEvent");e("."+t.dismissmodalclass).unbind("click.modalEvent");if(!s){f();if(t.animation=="fadeAndPop"){n.css({top:e(document).scrollTop()-i,opacity:0,visibility:"visible",display:"block"});o.fadeIn(t.animationspeed/2);n.delay(t.animationspeed/2).animate({top:e(document).scrollTop()+r+"px",opacity:1},t.animationspeed,a())}if(t.animation=="fade"){n.css({opacity:0,visibility:"visible",top:e(document).scrollTop()+r,display:"block"});o.fadeIn(t.animationspeed/2);n.delay(t.animationspeed/2).animate({opacity:1},t.animationspeed,a())}if(t.animation=="none"){n.css({visibility:"visible",top:e(document).scrollTop()+r,display:"block"});o.css({display:"block"});a()}}n.unbind("reveal:open")});n.bind("reveal:close",function(){if(!s){f();if(t.animation=="fadeAndPop"){o.delay(t.animationspeed).fadeOut(t.animationspeed);n.animate({top:e(document).scrollTop()-i+"px",opacity:0},t.animationspeed/2,function(){n.css({top:r,opacity:1,visibility:"hidden"});a()})}if(t.animation=="fade"){o.delay(t.animationspeed).fadeOut(t.animationspeed);n.animate({opacity:0},t.animationspeed,function(){n.css({opacity:1,visibility:"hidden",top:r});a()})}if(t.animation=="none"){n.css({visibility:"hidden",top:r});o.css({display:"none"})}}n.unbind("reveal:close")});n.trigger("reveal:open");var u=e("."+t.dismissmodalclass).bind("click.modalEvent",function(){n.trigger("reveal:close")});if(t.closeonbackgroundclick){o.css({cursor:"pointer"});o.bind("click.modalEvent",function(){n.trigger("reveal:close")})}e("body").keyup(function(e){if(e.which===27){n.trigger("reveal:close")}})})}})(jQuery)
+//Comprueba si la "cookie" existe y redirecciona
+$(document).ready(function() {
+
+	$('#mess').hide();
+	
+	if($.jStorage.get("conectado"))
+		console.log('Redireccionado')//window.location = "index.html";
+	else
+		$('html').removeClass('oculta');
+});
+//Respuesta json
+function res(val){
+	
+	$('#mess').html(val.msg).fadeIn();
+	
+	if(val.status=="true"){
+		//Diferencia de Fechas
+		var d1 = val.msg.split("/");
+		var dat1 = new Date(d1[2], parseFloat(d1[1])-1, parseFloat(d1[0]));
+		var formattedDate = new Date();
+		var act = formattedDate.getDate()+'/'+(formattedDate.getMonth()+1)+'/'+formattedDate.getFullYear();
+		var d2 = act.split("/");
+		var dat2 = new Date(d2[2], parseFloat(d2[1])-1, parseFloat(d2[0]));
+		var fin = dat1.getTime() - dat2.getTime();
+		var dias = Math.floor(fin / (1000 * 60 * 60 * 24))+1;
+		//Creacion de "cookie"
+		if(dias>0){
+			if(dias==1)	alert('Su suscripcion vence hoy, le recomendamos renovarla');
+			var vence = dias*86400000;//Convertimos los dias a milisegundos
+			var value = $.jStorage.get("conectado");
+			if(!value){
+				value = $('#user').val();
+				$.jStorage.set("conectado",value);
+				$.jStorage.setTTL("conectado", vence);
+				window.location = "index.html";//Redireccionamiento
+			}
+		}
+		else alert('Lo siento tu suscripcion vencio el '+val.msg);
+	}
+}
+function Envia(){
+	$(document).ready(function() {
+		$.ajax({
+		  url : 'http://www.stratomedios.mx/ags/wp-content/themes/smktmedios/login.php',
+		  dataType : 'jsonp',
+		  data : {
+			user: $('#user').val(),
+			pass: $('#pass').val()
+		  },
+		}).done(function( html ) {
+			console.log( html );
+		  });
+	});
+}
