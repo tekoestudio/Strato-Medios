@@ -76,7 +76,7 @@ function loaded() {
 			
 			if (pullDownEl.className.match('flip')) {
 				
-				$('#loading').fadeIn().html('<img id="loader" src="images/spinner.gif" />');				
+				$('#loading').fadeIn().html('<img id="loader" src="images/spinner2.gif" />');				
 				pullDownAction();	// Execute custom function (ajax call?)
 			} else if (pullUpEl.className.match('flip')) {
 				pullUpEl.className = 'loading';

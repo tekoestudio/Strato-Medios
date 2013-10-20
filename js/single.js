@@ -16,6 +16,8 @@ $(document).ready(function() {
     		//spinner
     		$('#spincen').hide();
     		
+    		
+    		
 			Handlebars.registerHelper('category', function(context, options) {
   				
   				switch(this.slug)
@@ -50,7 +52,10 @@ $(document).ready(function() {
         		scrollNav.refresh() ;
         		scrollContent.refresh();
         	} , 100 ) ;
-    		
+        	
+        var catti = $('.cattit').attr('rel');
+				$('#titcatsin').html(catti);
+				$('#header').addClass(catti);
     				
     	},
     	

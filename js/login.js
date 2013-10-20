@@ -32,10 +32,10 @@ function res(val){
 				value = $('#user').val();
 				$.jStorage.set("conectado",value);
 				$.jStorage.setTTL("conectado", vence);
-				window.location = "index.html";//Redireccionamiento
+				window.location = "category.html?cat=titulares";//Redireccionamiento
 			}
 		}
-		else alert('Lo siento tu suscripcion vencio el '+val.msg);
+		else alert('Lo siento tu suscripción venció el '+val.msg);
 	}
 }
 function Envia(){
