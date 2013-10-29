@@ -6,8 +6,8 @@ $(document).ready(function() {
 	//$.jStorage.remove('conectado');
 	
 	if($.jStorage.get("conectado"))
-		alert('si entro el store')
-		window.location = "category.html?cat=titulares"//Redireccionamiento
+		alert('si entro el store');
+		window.location = "category.html?cat=titulares";//Redireccionamiento
 	else
 		$('html').removeClass('oculta');
 });
