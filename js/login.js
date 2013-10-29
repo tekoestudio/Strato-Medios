@@ -4,7 +4,8 @@ $(document).ready(function() {
 	$('#mess').hide();
 	
 	if($.jStorage.get("conectado"))
-		console.log('Redireccionado')//window.location = "index.html";
+		console.log('Redireccionado')
+		window.location = "category.html?cat=titulares";//Redireccionamiento
 	else
 		$('html').removeClass('oculta');
 });
@@ -25,7 +26,7 @@ function res(val){
 		var dias = Math.floor(fin / (1000 * 60 * 60 * 24))+1;
 		//Creacion de "cookie"
 		if(dias>0){
-			if(dias==1)	alert('Su suscripcion vence hoy, le recomendamos renovarla');
+			if(dias==1)	alert('Su suscripción vence hoy, le recomendamos renovarla');
 			var vence = dias*86400000;//Convertimos los dias a milisegundos
 			var value = $.jStorage.get("conectado");
 			if(!value){
