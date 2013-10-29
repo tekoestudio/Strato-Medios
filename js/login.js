@@ -4,8 +4,7 @@ $(document).ready(function() {
 	$('#mess').hide();
 	
 	if($.jStorage.get("conectado"))
-		console.log('Redireccionado')
-		window.location = "category.html?cat=titulares";//Redireccionamiento
+		window.location = "category.html?cat=titulares"//Redireccionamiento
 	else
 		$('html').removeClass('oculta');
 });
