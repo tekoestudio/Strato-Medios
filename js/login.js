@@ -3,7 +3,7 @@ $(document).ready(function() {
 
 	$('#mess').hide();
 	
-	//$.jStorage.remove('conectado');
+	$.jStorage.remove('conectado');
 	
 	if($.jStorage.get("conectado"))
 		alert('si entro el store')
